@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 import { useSession } from '../../contexts/ctx';
 
 export default function AppLayout() {
-    const { session, isLoading } = useSession();
+    const { session, isLoading }: any = useSession();
 
     // You can keep the splash screen open, or render a loading screen like we do here.
     if (isLoading) {

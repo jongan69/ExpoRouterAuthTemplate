@@ -2,23 +2,13 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../../components/EditScreenInfo';
 import { Text, View } from '../../../components/Themed';
-import { useSession } from '../../../contexts/ctx';
 
-export default function TabTwoScreen() {
-  const { signOut } = useSession();
-
+export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
+      <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
-      <Text
-        onPress={() => {
-          // The `app/(app)/_layout.tsx` will redirect to the sign-in screen.
-          signOut();
-        }}>
-        Sign Out
-      </Text>
+      <EditScreenInfo path="app/(tabs)/home.tsx" />
     </View>
   );
 }

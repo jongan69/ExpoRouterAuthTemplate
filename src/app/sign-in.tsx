@@ -6,7 +6,7 @@ import { Text, View } from '../components/Themed';
 import { useSession } from '../contexts/ctx';
 
 export default function SignIn() {
-  const { signIn } = useSession();
+  const { signIn }: any = useSession();
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text
@@ -15,7 +15,7 @@ export default function SignIn() {
           signIn();
           // Navigate after signing in. You may want to tweak this to ensure sign-in is
           // successful before navigating.
-          router.replace('/(app)/(tabs)');
+          router.replace('/(app)/(tabs)/home');
         }}
       >Sign in</Text>
     </View>

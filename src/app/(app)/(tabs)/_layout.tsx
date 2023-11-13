@@ -1,8 +1,10 @@
 import { useColorScheme } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
+import { Link, Tabs, useLocalSearchParams } from 'expo-router';
 import { Pressable } from 'react-native';
 import Colors from '../../../constants/Colors';
+import * as appData from '../../../../app.json'
+
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -11,6 +13,7 @@ export const unstable_settings = {
 
 export default function AppLayout() {
   const colorScheme = useColorScheme();
+  const params = useLocalSearchParams();
 
   function TabBarIcon(props: {
     name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -25,9 +28,9 @@ export default function AppLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Tab One',
+          title: appData.expo.name ?? params.name,
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -46,9 +49,9 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="settings"
         options={{
-          title: 'Tab Two',
+          title: 'Settings',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
