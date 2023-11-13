@@ -2,9 +2,10 @@ import { useColorScheme } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs, useLocalSearchParams } from 'expo-router';
 import { Pressable } from 'react-native';
-import Colors from '../../../constants/Colors';
+import Themes from '../../../theme/Themes';
 import * as appData from '../../../../app.json'
-import { Text, View } from '../../../components/Themed';
+import { View, Text } from '../../../components/Themed';
+
 import { StyleSheet } from 'react-native';
 
 export const unstable_settings = {
@@ -26,7 +27,7 @@ export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: colorScheme ? Themes[colorScheme].tint : Themes.light.tint,
       }}>
       <Tabs.Screen
         name="index"
@@ -47,7 +48,7 @@ export default function AppLayout() {
                   <FontAwesome
                     name="info-circle"
                     size={25}
-                    color={Colors[colorScheme ?? 'dark'].tint}
+                    color={colorScheme ? Themes[colorScheme].tint : Themes.light.tint}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
@@ -75,8 +76,14 @@ export default function AppLayout() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 10,
+    height: '100%'
+  },
   title: {
-    color: 'white',
     fontSize: 20,
   },
   separator: {

@@ -1,18 +1,24 @@
 import {
   ThemeProvider,
   DarkTheme,
+  useTheme,
+  DefaultTheme,
 } from "@react-navigation/native";
 
 import { Slot } from 'expo-router';
 import { SessionProvider } from '../auth/ctx';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import themes from "../theme/Themes";
 
-import { useFonts } from 'expo-font';
-import { SplashScreen } from 'expo-router';
-import { useEffect } from 'react';
+import {
+  ApplicationProvider,
+  IconRegistry,
+} from "@ui-kitten/components";
+import { EvaIconsPack } from "@ui-kitten/eva-icons";
+import * as eva from "@eva-design/eva";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import useCachedResources from "../resources/hooks/useCachedResources";
+import { useState } from "react";
+import { ThemeContext } from "../theme/Theme";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -20,31 +26,29 @@ export {
 } from 'expo-router';
 
 export default function Root() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
-  });
+  const isLoadingComplete = useCachedResources();
+  const [theme, setTheme] = useState('light');
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+  };
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
 
-  if (!loaded) {
+  if (!isLoadingComplete) {
     return null;
   }
 
   // Set up the auth context and render our layout inside of it.
   return (
     <SessionProvider>
-      <ThemeProvider value={DarkTheme}>
-        <Slot />
+      <ThemeProvider value={theme === "light" ? DefaultTheme: DarkTheme}>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <IconRegistry icons={EvaIconsPack} />
+        <ApplicationProvider {...eva} theme={eva.dark}>
+          <Slot />
+        </ApplicationProvider>
+      </ThemeContext.Provider>
       </ThemeProvider>
     </SessionProvider>
   );

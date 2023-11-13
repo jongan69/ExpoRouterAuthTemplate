@@ -1,8 +1,13 @@
+import { light, dark } from "@eva-design/eva";
+
 const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
 
-export default {
+const themes = {
   light: {
+    theme: light,
+    title: "LIGHT",
+    icon: "sun",
     text: '#000',
     background: '#fff',
     tint: tintColorLight,
@@ -10,6 +15,9 @@ export default {
     tabIconSelected: tintColorLight,
   },
   dark: {
+    theme: dark,
+    title: "DARK",
+    icon: "moon",
     text: '#fff',
     background: '#000',
     tint: tintColorDark,
@@ -17,3 +25,5 @@ export default {
     tabIconSelected: tintColorDark,
   },
 };
+
+export default themes;
