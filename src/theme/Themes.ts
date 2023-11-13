@@ -3,7 +3,7 @@ import { light, dark } from "@eva-design/eva";
 const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
 
-const themes = {
+const Themes = {
   light: {
     theme: light,
     title: "LIGHT",
@@ -26,4 +26,4 @@ const themes = {
   },
 };
 
-export default themes;
+export default Themes;
