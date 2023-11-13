@@ -1,16 +1,35 @@
 import * as SecureStore from 'expo-secure-store';
 import * as React from 'react';
+import { Dispatch, SetStateAction, useReducer } from 'react';
 import { Platform } from 'react-native';
 
-type UseStateHook<T> = [[boolean, T | null], (value?: T | null) => void];
+// Original Update Context Hook -> Some Type Errors
+// type UseStateHook<T> = [[boolean, T | null], (value?: T | null) => void];
+
+// function useAsyncState<T>(
+//     initialValue: [boolean, T | null] = [true, undefined],
+// ): UseStateHook<T> {
+//     return React.useReducer(
+//         (state: [boolean, T | null], action: T | null = null) => [false, action],
+//         initialValue,
+//     ) as UseStateHook<T>;
+// }
+
+// AI Updated Typed Context Hook Update -> No Type errors
+type UseStateHook<T> = [
+    [boolean, T | null],
+    Dispatch<SetStateAction<T | null>>
+];
 
 function useAsyncState<T>(
-    initialValue: [boolean, T | null] = [true, undefined],
+    initialValue: T | null = null,
 ): UseStateHook<T> {
-    return React.useReducer(
-        (state: [boolean, T | null], action: T | null = null) => [false, action],
-        initialValue
-    ) as UseStateHook<T>;
+    const reducer = (
+        state: [boolean, T | null],
+        action: T | null = null,
+    ): [boolean, T | null] => [false, action];
+
+    return useReducer(reducer, [true, initialValue]) as UseStateHook<T>;
 }
 
 export async function setStorageItemAsync(key: string, value: string | null) {
@@ -55,7 +74,7 @@ export function useStorageState(key: string): UseStateHook<string> {
     }, [key]);
 
     // Set
-    const setValue = React.useCallback(
+    const setValue: any = React.useCallback(
         (value: string | null) => {
             setStorageItemAsync(key, value).then(() => {
                 setState(value);

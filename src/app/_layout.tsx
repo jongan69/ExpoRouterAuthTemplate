@@ -4,7 +4,7 @@ import {
 } from "@react-navigation/native";
 
 import { Slot } from 'expo-router';
-import { SessionProvider } from '../contexts/ctx';
+import { SessionProvider } from '../auth/ctx';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import { useFonts } from 'expo-font';

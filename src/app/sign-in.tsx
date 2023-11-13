@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import { useSession } from '../contexts/ctx';
+import { useSession } from '../auth/ctx';
 
 export default function SignIn() {
   const { signIn }: any = useSession();
