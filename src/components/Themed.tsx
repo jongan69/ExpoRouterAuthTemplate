@@ -8,6 +8,7 @@ import { Text as DefaultText, View as DefaultView, useColorScheme } from 'react-
 import Themes from '../theme/Themes';
 import React from 'react';
 import { ThemeContext } from '../theme/Theme';
+import { useTheme } from '@react-navigation/native';
 
 type ThemeProps = {
   lightColor?: string;
@@ -22,7 +23,7 @@ export function useThemeColor(
   colorName: keyof typeof Themes.light & keyof typeof Themes.dark
 ) {
 
-  const theme = React.useContext(ThemeContext).theme;
+  const theme = useTheme().dark ? 'dark': 'light'
   const colorFromProps = props[theme];
 
   if (colorFromProps) {

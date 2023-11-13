@@ -27,7 +27,14 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "babel": {
+        "include": [
+          "@ui-kitten/components",
+          "@ui-kitten/eva-icons",
+          "@aws-amplify/ui-react-native"
+        ]
+      }
     },
     "plugins": [
       "expo-router"

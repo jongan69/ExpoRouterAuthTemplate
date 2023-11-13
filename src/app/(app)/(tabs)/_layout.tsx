@@ -7,6 +7,7 @@ import * as appData from '../../../../app.json'
 import { View, Text } from '../../../components/Themed';
 
 import { StyleSheet } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -14,7 +15,7 @@ export const unstable_settings = {
 };
 
 export default function AppLayout() {
-  const colorScheme = useColorScheme();
+  const colorScheme = Themes[useTheme().dark ? 'dark': 'light'];
   const params = useLocalSearchParams();
 
   function TabBarIcon(props: {
@@ -27,7 +28,7 @@ export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colorScheme ? Themes[colorScheme].tint : Themes.light.tint,
+        tabBarActiveTintColor: colorScheme.tabIconSelected,
       }}>
       <Tabs.Screen
         name="index"
@@ -40,7 +41,7 @@ export default function AppLayout() {
               </Text>
               <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             </>),
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="code"  color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -48,7 +49,7 @@ export default function AppLayout() {
                   <FontAwesome
                     name="info-circle"
                     size={25}
-                    color={colorScheme ? Themes[colorScheme].tint : Themes.light.tint}
+                    color={colorScheme.tint}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}

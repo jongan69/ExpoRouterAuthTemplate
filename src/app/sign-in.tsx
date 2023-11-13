@@ -1,7 +1,6 @@
 import { router } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { useSession } from '../auth/ctx';
 
