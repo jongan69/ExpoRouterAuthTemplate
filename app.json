@@ -16,13 +16,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jongan69.exporouterauthtemplate"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jongan69.exporouterauthtemplate"
     },
     "web": {
       "bundler": "metro",
@@ -42,19 +44,16 @@
     "experiments": {
       "typedRoutes": true
     },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "extra": {
       "router": {
         "origin": false
       },
       "eas": {
-        "projectId": "01f29755-486a-48a2-ade4-a85d4e8c2fa1"
+        "projectId": "b18fcf18-4c75-4bca-b144-0a31e06958bc"
       }
-    },
-    "runtimeVersion": {
-      "policy": "sdkVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/01f29755-486a-48a2-ade4-a85d4e8c2fa1"
     }
   }
 }
