@@ -4,7 +4,8 @@ import { Link, Tabs, useLocalSearchParams } from 'expo-router';
 import { Pressable } from 'react-native';
 import Colors from '../../../constants/Colors';
 import * as appData from '../../../../app.json'
-
+import { Text, View } from '../../../components/Themed';
+import { StyleSheet } from 'react-native';
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -28,9 +29,16 @@ export default function AppLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}>
       <Tabs.Screen
-        name="home"
+        name="index"
         options={{
           title: appData.expo.name ?? params.name,
+          headerTitle: () => (
+            <>
+              <Text style={styles.title}>
+                Home
+              </Text>
+              <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+            </>),
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -52,9 +60,28 @@ export default function AppLayout() {
         name="settings"
         options={{
           title: 'Settings',
+          headerTitle: ({ children }) => (
+            <>
+              <Text style={styles.title}>
+                {children}
+              </Text>
+              <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+            </>),
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    color: 'white',
+    fontSize: 20,
+  },
+  separator: {
+    marginVertical: 1,
+    height: 1,
+    width: '100%',
+  },
+});
