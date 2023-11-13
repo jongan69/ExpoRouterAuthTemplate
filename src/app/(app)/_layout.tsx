@@ -6,6 +6,7 @@ import { useSession } from '../../auth/ctx';
 export default function AppLayout() {
     const { session, isLoading }: any = useSession();
 
+
     // You can keep the splash screen open, or render a loading screen like we do here.
     if (isLoading) {
         return <Text>Loading...</Text>;
