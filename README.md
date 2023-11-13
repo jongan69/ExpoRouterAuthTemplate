@@ -85,3 +85,7 @@ Feel free to contribute to this project. Please follow the [Contribution Guideli
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Notes
+
+--- Use  "web3": "4.0.2" to avoid error
