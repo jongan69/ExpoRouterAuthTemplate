@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Icon } from '@ui-kitten/components';
 
-const renderIcon = ({ name, style }) => (
+const renderIcon = ({ name, style }: any) => (
   <Icon {...style} name={name} />
 );
 
@@ -13,7 +13,7 @@ const ButtonWithIcon = ({
   onPress,
   text,
   style,
-}) => {
+}: any) => {
   const ButtonIcon = () => renderIcon({ name: icon, style: iconStyle });
   return (
     <Button

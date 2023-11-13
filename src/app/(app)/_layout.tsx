@@ -1,5 +1,5 @@
 import { Redirect, Stack } from 'expo-router';
-import { Text } from 'react-native';
+import { Text } from '../../components/Themed';
 
 import { useSession } from '../../auth/ctx';
 

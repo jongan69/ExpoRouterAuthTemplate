@@ -7,7 +7,6 @@ import { Text as DefaultText, View as DefaultView, useColorScheme } from 'react-
 
 import Themes from '../theme/Themes';
 import React from 'react';
-import { ThemeContext } from '../theme/Theme';
 import { useTheme } from '@react-navigation/native';
 
 type ThemeProps = {
