@@ -1,4 +1,3 @@
-import { useColorScheme } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs, useLocalSearchParams } from 'expo-router';
 import { Pressable } from 'react-native';

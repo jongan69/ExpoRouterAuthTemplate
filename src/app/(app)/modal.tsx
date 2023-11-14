@@ -1,16 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../../components/ContentCard';
+import ContentCard from '../../components/ContentCard';
 import { Text, View } from '../../components/Themed';
 import ToggleThemeButton from '../../components/ToggleThemeButton';
+import { usePathname, useSegments } from 'expo-router';
 
 export default function ModalScreen() {
+  const pathname = usePathname();
+  const segments = useSegments();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Modal</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/modal.tsx" />
+      <ContentCard 
+       header={'Welcome to the App'}
+       highlight={`You are at ${pathname}`}
+       subtitle={`Which is ${segments}`}
+       link={'Test'}
+        />
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />

@@ -1,4 +1,4 @@
-import { Link, Redirect, Slot, Stack } from 'expo-router';
+import { Redirect, Stack } from 'expo-router';
 import { Text } from '../../components/Themed';
 
 import { useSession } from '../../auth/ctx';
