@@ -10,7 +10,43 @@ import { ENV, API_KEY } from '../resources/config/env';
 import { BitcoinExtension } from "@magic-ext/bitcoin";
 import { GDKMSExtension } from "@magic-ext/gdkms";
 import { AuthExtension } from '@magic-ext/auth';
+// WEB AUTH
+const WebAuthContext = React.createContext<{ signIn: () => void; signOut: () => void; session?: string | null, isLoading: boolean; magicProps?: any; web3?: any; } | null>(null);
 
+// This hook can be used to access the user info.
+export function useWebSession() {
+    const value = React.useContext(WebAuthContext);
+    if (process.env.NODE_ENV !== 'production') {
+        if (!value) {
+            throw new Error('useSession must be wrapped in a <SessionProvider />');
+        }
+    }
+
+    return value;
+}
+
+export function WebSessionProvider(props: React.PropsWithChildren) {
+    const [[isLoading, session], setSession] = useStorageState('session');
+
+    return (
+        <WebAuthContext.Provider
+            value={{
+                signIn: () => {
+                    // Perform sign-in logic here
+                    setSession('xxx');
+                },
+                signOut: () => {
+                    setSession(null);
+                },
+                session,
+                isLoading,
+            }}>
+            {props.children}
+        </WebAuthContext.Provider>
+    );
+}
+
+// MOBILE AUTH
 const AuthContext = React.createContext<{ signIn: (email: string) => void; signOut: () => void; session?: string | null, isLoading: boolean; magicProps: any; web3?: any; } | null>(null);
 
 // This hook can be used to access the user info.
