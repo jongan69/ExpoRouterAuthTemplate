@@ -5,7 +5,7 @@ import {
   DefaultTheme,
 } from "@react-navigation/native";
 
-import { Slot } from 'expo-router';
+import { Slot, Stack } from 'expo-router';
 import { Drawer } from 'expo-router/drawer';
 
 import { SessionProvider } from '../auth/ctx';
@@ -47,41 +47,41 @@ export default function Root() {
   if (Platform.OS === 'web') {
     // Use a basic custom layout on web.
     return (
-      <Drawer>
-        <Drawer.Screen
+      <Stack>
+        <Stack.Screen
           name="index" // This is the name of the page and must match the url from root
           options={{
             drawerLabel: "Home",
             title: "Home",
           }}
         />
-        <Drawer.Screen
+        <Stack.Screen
           name="details" // This is the name of the page and must match the url from root
           options={{
             drawerLabel: "Details",
             title: "Details",
           }}
         />
-        <Drawer.Screen
+        <Stack.Screen
           name="sign-in" // This is the name of the page and must match the url from root
           options={{
             drawerLabel: "Sign-In",
             title: "Sign-In",
           }}
         />
-        <Drawer.Screen
+        <Stack.Screen
           name="(app)" // This is the name of the page and must match the url from root
           options={() => ({
             drawerItemStyle: { display: 'none' }
           })}
         />
-        <Drawer.Screen
+        <Stack.Screen
           name="[...missing]" // This is the name of the page and must match the url from root
           options={{
             drawerItemStyle: { display: 'none' }
           }}
         />
-      </Drawer>
+      </Stack>
     );
   }
 
