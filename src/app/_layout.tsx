@@ -23,6 +23,7 @@ import { useState } from "react";
 import { ThemeContext } from "../theme/Theme";
 import themes from "../theme/Themes";
 import 'text-encoding'
+import React from "react";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -51,36 +52,36 @@ export default function Root() {
         <Stack.Screen
           name="index" // This is the name of the page and must match the url from root
           options={{
-            drawerLabel: "Home",
+            // drawerLabel: "Home",
             title: "Home",
           }}
         />
         <Stack.Screen
           name="details" // This is the name of the page and must match the url from root
           options={{
-            drawerLabel: "Details",
+            // drawerLabel: "Details",
             title: "Details",
           }}
         />
         <Stack.Screen
           name="sign-in" // This is the name of the page and must match the url from root
           options={{
-            drawerLabel: "Sign-In",
+            // drawerLabel: "Sign-In",
             title: "Sign-In",
           }}
         />
-        <Stack.Screen
+        {/* <Drawer.Screen
           name="(app)" // This is the name of the page and must match the url from root
           options={() => ({
             drawerItemStyle: { display: 'none' }
           })}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="[...missing]" // This is the name of the page and must match the url from root
           options={{
             drawerItemStyle: { display: 'none' }
           }}
-        />
+        /> */}
       </Stack>
     );
   }

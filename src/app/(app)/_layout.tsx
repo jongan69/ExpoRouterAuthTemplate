@@ -2,8 +2,15 @@ import { Redirect, Stack } from 'expo-router';
 import { Text } from '../../components/Themed';
 
 import { useSession } from '../../auth/ctx';
+import { Platform } from 'react-native';
+import React from 'react';
 
-export default function AppLayout() {      
+export default function AppLayout() {
+    if (Platform.OS === 'web') {
+        alert('You are not authenticated.')
+        return <Redirect href="/" />;
+    }
+
     const { session, isLoading }: any = useSession();
 
     // You can keep the splash screen open, or render a loading screen like we do here.

@@ -7,6 +7,7 @@ import { View, Text } from '../../../components/Themed';
 
 import { StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import React from 'react';
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.

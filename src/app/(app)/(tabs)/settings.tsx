@@ -4,6 +4,7 @@ import ContentCard from '../../../components/ContentCard';
 import { Text, View } from '../../../components/Themed';
 import { useSession } from '../../../auth/ctx';
 import { usePathname, useSegments } from 'expo-router';
+import React from 'react';
 
 export default function TabTwoScreen() {
   const { signOut }: any = useSession();

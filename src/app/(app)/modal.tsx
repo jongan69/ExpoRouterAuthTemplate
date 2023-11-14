@@ -5,6 +5,7 @@ import ContentCard from '../../components/ContentCard';
 import { Text, View } from '../../components/Themed';
 import ToggleThemeButton from '../../components/ToggleThemeButton';
 import { usePathname, useSegments } from 'expo-router';
+import React from 'react';
 
 export default function ModalScreen() {
   const pathname = usePathname();
@@ -13,12 +14,12 @@ export default function ModalScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Modal</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <ContentCard 
-       header={'Welcome to the App'}
-       highlight={`You are at ${pathname}`}
-       subtitle={`Which is ${segments}`}
-       link={'Test'}
-        />
+      <ContentCard
+        header={'Welcome to the App'}
+        highlight={`You are at ${pathname}`}
+        subtitle={`Which is ${segments}`}
+        link={'Test'}
+      />
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />

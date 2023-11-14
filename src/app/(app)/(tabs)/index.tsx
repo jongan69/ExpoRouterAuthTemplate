@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import ContentCard from '../../../components/ContentCard';
 import { Text, View } from '../../../components/Themed';
 import { useLocalSearchParams, usePathname, useSegments } from 'expo-router';
+import React from 'react';
 
 export default function TabOneScreen() {
   const pathname = usePathname();
