@@ -26,7 +26,7 @@ export function useSession() {
 }
 
 export function SessionProvider(props: React.PropsWithChildren) {
-    const [[isLoading, session], setSession] = useStorageState('email');
+    const [[isLoading, session], setSession] = useStorageState('session');
     const [env, setEnv] = React.useState(ENV.PROD);
 
     const magic = new Magic(API_KEY[env], {
