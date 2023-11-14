@@ -5,7 +5,7 @@ import {
   DefaultTheme,
 } from "@react-navigation/native";
 
-import { Link, Slot } from 'expo-router';
+import { Slot } from 'expo-router';
 import { Drawer } from 'expo-router/drawer';
 
 import { SessionProvider } from '../auth/ctx';

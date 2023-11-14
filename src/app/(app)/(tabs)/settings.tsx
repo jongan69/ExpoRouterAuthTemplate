@@ -1,17 +1,24 @@
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../../../components/EditScreenInfo';
+import ContentCard from '../../../components/ContentCard';
 import { Text, View } from '../../../components/Themed';
 import { useSession } from '../../../auth/ctx';
+import { usePathname, useSegments } from 'expo-router';
 
 export default function TabTwoScreen() {
   const { signOut }: any = useSession();
-
+  const pathname = usePathname();
+  const segments = useSegments();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab Two</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/settings.tsx" />
+      <ContentCard
+        header={'Welcome to the App'}
+        highlight={`You are at ${pathname}`}
+        subtitle={`Which is ${segments}`}
+        link={'Test'}
+      />
       <Text
         onPress={() => {
           // The `app/(app)/_layout.tsx` will redirect to the sign-in screen.
