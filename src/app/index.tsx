@@ -3,7 +3,6 @@ import { TextInput, Text, View, Pressable, StyleSheet, Platform } from 'react-na
 import { Card } from 'react-native-elements';
 import { useSession } from '../auth/ctx';
 import { Stack, router } from 'expo-router';
-import Banner from '../components/Banner.web';
 import Header from '../components/Header.web';
 import { useMagicSession } from '../auth/magicSdk';
 
@@ -38,12 +37,12 @@ export default function SignInScreen() {
           />
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* First team member */}
-            <Banner
+            {/* <Banner
               title="Jonathan Gan"
               subtitle="Software Engineer"
               description="Lor ipsumtamet, consectetur adipiscing elit, sed do eiusmod te"
               img="https://github.com/jongan69/jongan69/blob/main/profile.PNG?raw=true"
-            />
+            /> */}
           </div>
           {/* GitHub Link */}
 
@@ -73,7 +72,7 @@ export default function SignInScreen() {
         <div className="pt-12 text-center">
           <a
             className="text-base font-bold text-indigo-600"
-            href="https://github.com/evanbacon/expo-router-tailwind-demo"
+            href="https://github.com/jongan69/ExpoRouterAuthTemplate"
           >
             View on GitHub
           </a>
