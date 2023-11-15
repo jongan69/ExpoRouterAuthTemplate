@@ -2,8 +2,8 @@ import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import React from 'react'
-import { useWebSession } from '../auth/ctx'
-import { usePathname } from 'expo-router';
+import { useSession } from '../auth/ctx'
+import { router, usePathname } from 'expo-router';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -11,12 +11,11 @@ function classNames(...classes) {
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Details', href: '/details' },
-    { name: 'Sign-In', href: '/sign-in' },
+    { name: 'About', href: '/about' },
   ]
 
 export default function WebNavbar() {
-  const { session, signOut }: any = useWebSession();
+  const { session, signOut }: any = useSession();
   const pathname = usePathname();
   // console.log('WEB AUTH IN NAV:' , session)
   return (
@@ -79,6 +78,7 @@ export default function WebNavbar() {
                   <button
                     type="button"
                     className="relative p-1 text-gray-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    onClick={() => router.replace('/(app)/(web)/notifications')}
                   >
                     <span className="absolute -inset-1.5" />
                     <span className="sr-only">View notifications</span>
@@ -110,7 +110,7 @@ export default function WebNavbar() {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
+                              href="/(web)/profile"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
                               Your Profile
@@ -120,7 +120,7 @@ export default function WebNavbar() {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
+                              href="/(web)/settings"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
                               Settings

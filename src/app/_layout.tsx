@@ -7,7 +7,7 @@ import {
 
 import { Slot, Stack } from 'expo-router';
 
-import { SessionProvider, WebSessionProvider } from '../auth/ctx';
+import { SessionProvider } from '../auth/ctx';
 
 import {
   ApplicationProvider,
@@ -24,6 +24,8 @@ import themes from "../theme/Themes";
 import 'text-encoding'
 import React from "react";
 import WebNavbar from "../components/Navbar.web";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { MagicTools } from "../auth/magicSdk";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -48,40 +50,35 @@ export default function Root() {
   if (Platform.OS === 'web') {
     // Use a basic custom layout on web.
     return (
-      <WebSessionProvider>
-        <WebNavbar />
-        <Stack screenOptions={{
-          headerShown: false
-        }}>
-          <Stack.Screen
-            name="index" // This is the name of the page and must match the url from root
-            options={{
-              // drawerLabel: "Home",
-              title: "Home",
-            }}
-          />
-          <Stack.Screen
-            name="details" // This is the name of the page and must match the url from root
-            options={{
-              // drawerLabel: "Details",
-              title: "Details",
-            }}
-          />
-          <Stack.Screen
-            name="sign-in" // This is the name of the page and must match the url from root
-            options={{
-              // drawerLabel: "Sign-In",
-              title: "Sign-In",
-            }}
-          />
-        </Stack>
-      </WebSessionProvider>
+      <SessionProvider>
+        <ThemeProvider value={themeName === "light" ? DefaultTheme : DarkTheme}>
+          <WebNavbar />
+          <Stack screenOptions={{
+            headerShown: false
+          }}>
+            <Stack.Screen
+              name="index" // This is the name of the page and must match the url from root
+              options={{
+                // drawerLabel: "Home",
+                title: "Home",
+              }}
+            />
+            <Stack.Screen
+              name="details" // This is the name of the page and must match the url from root
+              options={{
+                // drawerLabel: "Details",
+                title: "Details",
+              }}
+            />
+            
+          </Stack>
+        </ThemeProvider>
+      </SessionProvider>
     );
-  }
-
+  } else {
   // Set up the auth context and render our layout inside of it.
   return (
-    <SessionProvider>
+    <MagicTools>
       <ThemeProvider value={themeName === "light" ? DefaultTheme : DarkTheme}>
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <IconRegistry icons={EvaIconsPack} />
@@ -90,6 +87,7 @@ export default function Root() {
           </ApplicationProvider>
         </ThemeContext.Provider>
       </ThemeProvider>
-    </SessionProvider>
+    </MagicTools>
   );
+  }
 }

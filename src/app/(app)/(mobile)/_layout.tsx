@@ -15,7 +15,7 @@ export const unstable_settings = {
 };
 
 export default function AppLayout() {
-  const colorScheme = Themes[useTheme().dark ? 'dark': 'light'];
+  // const colorScheme = Themes[useTheme().dark ? 'dark': 'light'];
   const params = useLocalSearchParams();
 
   function TabBarIcon(props: {
@@ -28,7 +28,7 @@ export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colorScheme.tabIconSelected,
+        // tabBarActiveTintColor: colorScheme.tabIconSelected,
       }}>
       <Tabs.Screen
         name="index"
@@ -49,7 +49,7 @@ export default function AppLayout() {
                   <FontAwesome
                     name="info-circle"
                     size={25}
-                    color={colorScheme.tint}
+                    // color={colorScheme.tint}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}

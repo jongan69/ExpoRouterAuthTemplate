@@ -2,25 +2,31 @@ import { StyleSheet } from 'react-native';
 
 import ContentCard from '../../../components/ContentCard';
 import { Text, View } from '../../../components/Themed';
-import { useLocalSearchParams, usePathname, useSegments } from 'expo-router';
+import { useSession } from '../../../auth/ctx';
+import { usePathname, useSegments } from 'expo-router';
 import React from 'react';
 
-export default function TabOneScreen() {
+export default function WebSettings() {
+  const { signOut }: any = useSession();
   const pathname = usePathname();
   const segments = useSegments();
-
-  const { user, extra } = useLocalSearchParams();
-
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Settings</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <ContentCard
-        header={'Welcome to the App'}
+        header={'Settings'}
         highlight={`You are at ${pathname}`}
         subtitle={`Which is ${segments}`}
         link={'Test'}
       />
+      <Text
+        onPress={() => {
+          // The `app/(app)/_layout.tsx` will redirect to the sign-in screen.
+          signOut();
+        }}>
+        Sign Out
+      </Text>
     </View>
   );
 }

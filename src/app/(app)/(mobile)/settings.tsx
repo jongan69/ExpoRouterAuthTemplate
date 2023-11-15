@@ -1,18 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import ContentCard from '../../components/ContentCard';
-import { Text, View } from '../../components/Themed';
-import ToggleThemeButton from '../../components/ToggleThemeButton';
+import ContentCard from '../../../components/ContentCard';
+import { Text, View } from '../../../components/Themed';
 import { usePathname, useSegments } from 'expo-router';
 import React from 'react';
+import { useMagicSession } from '../../../auth/magicSdk';
 
-export default function ModalScreen() {
+export default function TabTwoScreen() {
+  const { signOut }: any = useMagicSession();
   const pathname = usePathname();
   const segments = useSegments();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
+      <Text style={styles.title}>Settings</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <ContentCard
         header={'Welcome to the App'}
@@ -20,10 +20,13 @@ export default function ModalScreen() {
         subtitle={`Which is ${segments}`}
         link={'Test'}
       />
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-      {Platform.OS !== 'web' && <ToggleThemeButton />}
+      <Text
+        onPress={() => {
+          // The `app/(app)/_layout.tsx` will redirect to the sign-in screen.
+          signOut();
+        }}>
+        Sign Out
+      </Text>
     </View>
   );
 }

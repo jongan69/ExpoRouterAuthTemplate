@@ -2,7 +2,10 @@ import React from 'react';
 import { TextInput, Text, View, Pressable, StyleSheet, Platform } from 'react-native';
 import { Card } from 'react-native-elements';
 import { useSession } from '../auth/ctx';
-import { router } from 'expo-router';
+import { Stack, router } from 'expo-router';
+import Banner from '../components/Banner.web';
+import Header from '../components/Header.web';
+import { useMagicSession } from '../auth/magicSdk';
 
 export default function SignInScreen() {
   const isWeb = Platform.OS === 'web'
@@ -21,97 +24,66 @@ export default function SignInScreen() {
     </View>
   )
 
-  function TeamMate({ img, name, role }) {
-    return (
-      <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
-        <div className="w-full md:w-2/5 h-80">
-          <img
-            className="object-center object-cover w-full h-full"
-            src={img}
-            alt="photo"
-          />
-        </div>
-        <div className="w-full md:w-3/5 text-left p-6 md:p-4 space-y-2">
-          <p className="text-xl text-gray-700 font-bold">{name}</p>
-          <p className="text-base text-gray-400 font-normal">{role}</p>
-          <p className="text-base leading-relaxed text-gray-500 font-normal">
-            Lor ipsumtamet, consectetur adipiscing elit, sed do eiusmod te
-          </p>
-          <div className="flex justify-start space-x-2">
-            {/* Social media icons */}
-            {/* ... */}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   if (isWeb) {
-    const webSignIn = () => {
-      alert('Static Login Here, Im not doing that lol');
-    }
+    const { signIn, session }: any = useSession();
+        React.useEffect(() => {
+      if (session) router.replace('/(app)/(web)/');
+    }, [session])
     return (
       <>
-        {isWeb
-          ? <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
-            <div className="text-center pb-12">
-              <h2 className="text-base font-bold text-indigo-600">
-                Welcome to Expo Router Web
-              </h2>
-              <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                Styled using Tailwind CSS
-              </h1>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* First team member */}
-              <TeamMate
-                name="Jonathan Gan"
-                role="Software Engineer"
-                img="https://github.com/jongan69/jongan69/blob/main/profile.PNG?raw=true"
-              />
-            </div>
-            {/* GitHub Link */}
-            <div className="text-center pt-12">
-              <a
-                className="text-base font-bold text-indigo-600"
-                href="https://github.com/evanbacon/expo-router-tailwind-demo"
-              >
-                View on GitHub
-              </a>
-            </div>
-          </section>
-          :
-          <View style={styles.container}>
-            <Card>
-              <Card.Title>Expo Router Mobile Auth</Card.Title>
-              {/* Email Login */}
-              <Card>
-                <Card.Title>Email Login</Card.Title>
-                <View style={styles.loginContainer}>
-                  <View style={styles.emailContainer}>
-                    <Text>
-                      Email: {' '}
-                    </Text>
-                    <TextInput
-                      style={styles.TextInputContainer}
-                      placeholder='demo@gmail.com'
-                      onChangeText={text => onChangeEmail(text)}
-                      value={email}
-                    />
-                  </View>
-                </View>
-              </Card>
-              <TouchableButton handler={() => webSignIn()} title="Login" />
-            </Card>
-          </View >
-        }
+        <section className="max-w-6xl px-4 py-12 mx-auto sm:px-6 lg:px-4">
+          <Header
+            title="Welcome to Expo Router Web"
+            subTitle="Styled using Tailwind CSS"
+          />
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {/* First team member */}
+            <Banner
+              title="Jonathan Gan"
+              subtitle="Software Engineer"
+              description="Lor ipsumtamet, consectetur adipiscing elit, sed do eiusmod te"
+              img="https://github.com/jongan69/jongan69/blob/main/profile.PNG?raw=true"
+            />
+          </div>
+          {/* GitHub Link */}
+
+        </section>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Stack.Screen
+            options={{
+              // https://reactnavigation.org/docs/headers#setting-the-header-title
+              title: 'Welcome',
+              // https://reactnavigation.org/docs/headers#adjusting-header-styles
+              headerStyle: { backgroundColor: '#f4511e' },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              // https://reactnavigation.org/docs/headers#replacing-the-title-with-a-custom-component
+            }}
+          />
+          <Text>Welcome to the {Platform.OS}!</Text>
+          {Platform.OS === 'web' && <a onClick={() => {
+            signIn(),
+              router.push('/(app)/(web)/')
+          }}>
+            Click here to sign in
+          </a>}
+        </View>
+        <div className="pt-12 text-center">
+          <a
+            className="text-base font-bold text-indigo-600"
+            href="https://github.com/evanbacon/expo-router-tailwind-demo"
+          >
+            View on GitHub
+          </a>
+        </div>
       </>
     );
-
   } else {
-    const { signIn, session }: any = useSession();
+    const { signIn, session }: any = useMagicSession();
     React.useEffect(() => {
-      if (session) router.push('/(app)/(tabs)')
+      if (session) router.replace('/(app)/(mobile)');
     }, [session])
     return (
       <View style={styles.container}>
@@ -119,24 +91,24 @@ export default function SignInScreen() {
         {/* <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer} keyboardShouldPersistTaps="handled"> */}
         {/* Magic Auth Sign-in */}
         <Card>
-          <Card.Title>Expo Router Auth</Card.Title>
+          <Card.Title>Welcome to the Mobile App</Card.Title>
           {/* Email Login */}
-          <Card>
-            <Card.Title>Email Login</Card.Title>
-            <View style={styles.loginContainer}>
-              <View style={styles.emailContainer}>
-                <Text>
-                  Email: {' '}
-                </Text>
-                <TextInput
-                  style={styles.TextInputContainer}
-                  placeholder='demo@gmail.com'
-                  onChangeText={text => onChangeEmail(text)}
-                  value={email}
-                />
-              </View>
+
+          <Card.Title>Email Login</Card.Title>
+          <View style={styles.loginContainer}>
+            <View style={styles.emailContainer}>
+              <Text>
+                Email: {' '}
+              </Text>
+              <TextInput
+                style={styles.TextInputContainer}
+                placeholder='demo@gmail.com'
+                onChangeText={text => onChangeEmail(text)}
+                value={email}
+              />
             </View>
-          </Card>
+          </View>
+
           {/* <CustomSwitch
                 selectionMode={2}
                 option1="Email"
