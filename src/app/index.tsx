@@ -5,9 +5,9 @@ import { useSession } from '../auth/ctx';
 import { router } from 'expo-router';
 
 export default function SignInScreen() {
+  const isWeb = Platform.OS === 'web'
   const [email, onChangeEmail] = React.useState('');
   // const [phoneNumber, onChangePhoneNumber] = React.useState('');
-  const isWeb = Platform.OS === 'web'
 
   // const onSelectSwitch = (value: any) => {
 
@@ -56,18 +56,18 @@ export default function SignInScreen() {
           ? <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
             <div className="text-center pb-12">
               <h2 className="text-base font-bold text-indigo-600">
-                We have the best styling in the market
+                Welcome to Expo Router Web
               </h2>
               <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                Check our awesome team members!
+                Styled using Tailwind CSS
               </h1>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* First team member */}
               <TeamMate
-                name="Evan Bacon"
+                name="Jonathan Gan"
                 role="Software Engineer"
-                img="https://github.com/evanbacon.png"
+                img="https://github.com/jongan69/jongan69/blob/main/profile.PNG?raw=true"
               />
             </div>
             {/* GitHub Link */}
@@ -83,7 +83,7 @@ export default function SignInScreen() {
           :
           <View style={styles.container}>
             <Card>
-              <Card.Title>Expo Router Auth</Card.Title>
+              <Card.Title>Expo Router Mobile Auth</Card.Title>
               {/* Email Login */}
               <Card>
                 <Card.Title>Email Login</Card.Title>
@@ -135,9 +135,7 @@ export default function SignInScreen() {
                   value={email}
                 />
               </View>
-
             </View>
-
           </Card>
           {/* <CustomSwitch
                 selectionMode={2}

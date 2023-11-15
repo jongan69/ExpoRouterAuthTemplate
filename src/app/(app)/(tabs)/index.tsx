@@ -15,12 +15,12 @@ export default function TabOneScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <ContentCard 
-       header={'Welcome to the App'}
-       highlight={`You are at ${pathname}`}
-       subtitle={`Which is ${segments}`}
-       link={'Test'}
-        />
+      <ContentCard
+        header={'Welcome to the App'}
+        highlight={`You are at ${pathname}`}
+        subtitle={`Which is ${segments}`}
+        link={'Test'}
+      />
     </View>
   );
 }
