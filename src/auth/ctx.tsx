@@ -4,7 +4,7 @@ import { useStorageState } from './useStorageState';
 import { router } from 'expo-router';
 
 // WEB AUTH
-const WebAuthContext = React.createContext<{ signIn: () => void; signOut: () => void; session?: string | null, isLoading: boolean } | null>(null);
+const WebAuthContext = React.createContext<{ signIn: (email) => void; signOut: () => void; session?: string | null, isLoading: boolean } | null>(null);
 
 // This hook can be used to access the user info.
 export function useSession() {
@@ -33,9 +33,9 @@ export function SessionProvider(props: React.PropsWithChildren) {
     return (
         <WebAuthContext.Provider
             value={{
-                signIn: () => {
+                signIn: (email) => {
                     // Perform sign-in logic here
-                    setSession('xxx');
+                    setSession(email);
                 },
                 signOut: () => {
                     setSession(null);

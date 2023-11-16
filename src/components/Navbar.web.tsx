@@ -5,6 +5,8 @@ import React from 'react'
 import { useSession } from '../auth/ctx'
 import { router, usePathname } from 'expo-router';
 
+import * as appData from '../../app.json';
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -40,8 +42,8 @@ export default function WebNavbar() {
                 <div className="flex items-center flex-shrink-0">
                   <img
                     className="w-auto h-8"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
+                    src={appData.expo.icon}
+                    alt={appData.expo.name}
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
