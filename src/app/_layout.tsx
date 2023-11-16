@@ -70,24 +70,26 @@ export default function Root() {
                 title: "Details",
               }}
             />
-            
+
           </Stack>
         </ThemeProvider>
       </SessionProvider>
     );
   } else {
-  // Set up the auth context and render our layout inside of it.
-  return (
-    <MagicTools>
-      <ThemeProvider value={themeName === "light" ? DefaultTheme : DarkTheme}>
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-          <IconRegistry icons={EvaIconsPack} />
-          <ApplicationProvider {...eva} theme={theme}>
-            <Slot />
-          </ApplicationProvider>
-        </ThemeContext.Provider>
-      </ThemeProvider>
-    </MagicTools>
-  );
+    // Set up the auth context and render our layout inside of it.
+    return (
+      // Magic SDK seems to break on Web
+      <MagicTools>
+        <ThemeProvider value={themeName === "light" ? DefaultTheme : DarkTheme}>
+          <ThemeContext.Provider value={{ theme, toggleTheme }}>
+          {/* // Removing these wrapper would fix web refresh / hydration issues */}
+            <IconRegistry icons={EvaIconsPack} />
+            <ApplicationProvider {...eva} theme={theme}>
+              <Slot />
+            </ApplicationProvider>
+          </ThemeContext.Provider>
+        </ThemeProvider>
+      </MagicTools>
+    );
   }
 }
