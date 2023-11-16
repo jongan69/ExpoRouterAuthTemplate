@@ -42,7 +42,7 @@ export default function WebNavbar() {
                 <div className="flex items-center flex-shrink-0">
                   <img
                     className="w-auto h-8"
-                    src={appData.expo.icon}
+                    src={'../../assets/images/icon.png'}
                     alt={appData.expo.name}
                   />
                 </div>

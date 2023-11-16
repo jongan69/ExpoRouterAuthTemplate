@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SplashScreen } from 'expo-router';
 import * as Font from "expo-font";
+import { Asset } from 'expo-asset';
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -10,6 +11,8 @@ export default function useCachedResources() {
     async function loadResourcesAndDataAsync() {
       try {
         SplashScreen.preventAutoHideAsync();
+
+        const [{ localUri }] = await Asset.loadAsync(require('../../../assets/images/icon.png'));
 
         // Load fonts
         await Font.loadAsync({
