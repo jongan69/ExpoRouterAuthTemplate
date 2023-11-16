@@ -1,31 +1,37 @@
 import React from 'react';
-import { TextInput, Text, View, Pressable, StyleSheet, Platform } from 'react-native';
-import { Card } from 'react-native-elements';
+import { StyleSheet, Platform, SafeAreaView, TouchableOpacity } from 'react-native';
+// import { Card } from '@ui-kitten/components';
+import { Text, View } from '../components/Themed'
 import { useSession } from '../auth/ctx';
 import { Stack, router } from 'expo-router';
 import Header from '../components/Header.web';
 import { useMagicSession } from '../auth/magicSdk';
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import LoginSVG from "../../assets/images/login.svg";
+import AppleSVG from "../../assets/images/apple.svg";
+import GoogleSVG from "../../assets/images/google.svg";
+import FacebookSVG from "../../assets/images/facebook.svg";
+import CustomButton from '../components/CustomButton';
+import InputField from '../components/InputField';
+import CustomSwitch from '../components/CustomSwitch';
+import { Card } from '@ui-kitten/components';
+
+import * as appData from '../../app.json'
 
 export default function SignInScreen() {
   const isWeb = Platform.OS === 'web'
   const [email, onChangeEmail] = React.useState('');
-  // const [phoneNumber, onChangePhoneNumber] = React.useState('');
+  const [phoneNumber, onChangePhoneNumber] = React.useState('');
 
-  // const onSelectSwitch = (value: any) => {
+  const onSelectSwitch = (value: any) => {
 
-  // };
-
-  const TouchableButton = (props: { handler: () => void, title: String }) => (
-    <View style={styles.actionContainer}>
-      <Pressable style={styles.button} onPress={() => props.handler()}>
-        <Text style={styles.text}>{props.title}</Text>
-      </Pressable>
-    </View>
-  )
+  };
 
   if (isWeb) {
     const { signIn, session }: any = useSession();
-        React.useEffect(() => {
+    React.useEffect(() => {
       if (session) router.replace('/(app)/(web)/');
     }, [session])
     return (
@@ -36,16 +42,7 @@ export default function SignInScreen() {
             subTitle="Styled using Tailwind CSS"
           />
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {/* First team member */}
-            {/* <Banner
-              title="Jonathan Gan"
-              subtitle="Software Engineer"
-              description="Lor ipsumtamet, consectetur adipiscing elit, sed do eiusmod te"
-              img="https://github.com/jongan69/jongan69/blob/main/profile.PNG?raw=true"
-            /> */}
           </div>
-          {/* GitHub Link */}
-
         </section>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Stack.Screen
@@ -58,7 +55,6 @@ export default function SignInScreen() {
               headerTitleStyle: {
                 fontWeight: 'bold',
               },
-              // https://reactnavigation.org/docs/headers#replacing-the-title-with-a-custom-component
             }}
           />
           <Text>Welcome to the {Platform.OS}!</Text>
@@ -72,7 +68,7 @@ export default function SignInScreen() {
         <div className="pt-12 text-center">
           <a
             className="text-base font-bold text-indigo-600"
-            href="https://github.com/jongan69/ExpoRouterAuthTemplate"
+            href={appData.expo.githubUrl}
           >
             View on GitHub
           </a>
@@ -85,40 +81,148 @@ export default function SignInScreen() {
       if (session) router.replace('/(app)/(mobile)');
     }, [session])
     return (
-      <View style={styles.container}>
-        {/* <GestureHandlerRootView style={styles.contentContainer}> */}
-        {/* <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer} keyboardShouldPersistTaps="handled"> */}
-        {/* Magic Auth Sign-in */}
-        <Card>
-          <Card.Title>Welcome to the Mobile App</Card.Title>
-          {/* Email Login */}
 
-          <Card.Title>Email Login</Card.Title>
-          <View style={styles.loginContainer}>
-            <View style={styles.emailContainer}>
-              <Text>
-                Email: {' '}
-              </Text>
-              <TextInput
-                style={styles.TextInputContainer}
-                placeholder='demo@gmail.com'
-                onChangeText={text => onChangeEmail(text)}
-                value={email}
+      <SafeAreaView
+        style={{
+          flex: 1,
+          justifyContent: "center",
+        }}
+      >
+        <KeyboardAwareScrollView>
+          <View style={styles.container}>
+            <View style={{ alignItems: "center" }}>
+              <LoginSVG
+                height={300}
+                width={300}
+                style={{ transform: [{ rotate: "-5deg" }] }}
               />
+              <Text
+                style={{
+                  fontFamily: "Roboto-Medium",
+                  fontSize: 28,
+                  fontWeight: "500",
+                  marginBottom: 30,
+                }}
+              >
+                Login
+              </Text>
             </View>
-          </View>
+            {/* Magic Auth Email Sign-in */}
+            <Card style={styles.card}>
+              {/* Email Login */}
+              <View style={{ paddingHorizontal: 25 }}>
+                <InputField
+                  label={"Email ID"}
+                  icon={<MaterialIcons
+                    name="alternate-email"
+                    size={20}
+                    color="#666"
+                    style={{ marginRight: 5 }} />}
+                  keyboardType="email-address"
+                  value={email}
+                  inputType={undefined}
+                  fieldButtonLabel={undefined}
+                  fieldButtonFunction={undefined}
+                  onChangeText={text => onChangeEmail(text)}
+                />
+                <CustomSwitch
+                  selectionMode={1}
+                  option1="Email"
+                  option2="Phone"
+                  onSelectSwitch={onSelectSwitch}
+                />
 
-          {/* <CustomSwitch
-                selectionMode={2}
-                option1="Email"
-                option2="Phone"
-                onSelectSwitch={onSelectSwitch}
-              /> */}
-          <TouchableButton handler={() => signIn(email)} title="Login" />
-        </Card>
-        {/* </ScrollView > */}
-        {/* </GestureHandlerRootView> */}
-      </View >
+                {/* <InputField
+          label={error ? 'Error Please Try again' : 'Wallet Address'}
+          icon={<Ionicons
+            name="wallet"
+            size={20}
+            color={colors.primary}
+            style={{ marginRight: 5 }} />}
+          value={address}
+          onChangeText={(value: string) => setAddress(value)}
+          inputType="wallet"
+          keyboardType={undefined} /> */}
+
+                <CustomButton
+                  label={"Login"}
+                  onPress={() => {
+                    signIn(email)
+                  }}
+                />
+
+                <Text
+                  style={{
+                    textAlign: "center",
+                    marginBottom: 30,
+                  }}
+                >
+                  Or, login with ...
+                </Text>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    marginBottom: 30,
+                  }}
+                >
+                  <TouchableOpacity
+                    // onPress={() => Login("google")}
+                    style={{
+                      borderWidth: 2,
+                      borderRadius: 10,
+                      paddingHorizontal: 30,
+                      paddingVertical: 10,
+                    }}
+                  >
+                    <GoogleSVG height={24} width={24} />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    // onPress={() => Login("apple")}
+                    style={{
+                      borderWidth: 2,
+                      borderRadius: 10,
+                      paddingHorizontal: 30,
+                      paddingVertical: 10,
+                    }}
+                  >
+                    <AppleSVG height={24} width={24} />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    // onPress={() => Login("facebook")}
+                    style={{
+                      borderWidth: 2,
+                      borderRadius: 10,
+                      paddingHorizontal: 30,
+                      paddingVertical: 10,
+                    }}
+                  >
+                    <FacebookSVG height={24} width={24} />
+                  </TouchableOpacity>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    marginBottom: 30,
+                  }}
+                >
+                  {/* <Text 
+          style={{
+            color: colors.text,
+          }}
+          >
+            New to the app?
+            </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text style={{ color: colors.primary, fontWeight: '700' }}> Register </Text>
+          </TouchableOpacity> */}
+                </View>
+              </View>
+            </Card>
+          </View >
+        </KeyboardAwareScrollView>
+      </SafeAreaView>
     );
   }
 }
@@ -129,17 +233,34 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#fff',
   },
+  topContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  icon: {
+    width: 32,
+    height: 32,
+  },
+  card: {
+    margin: 2,
+  },
+  footerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  footerControl: {
+    marginHorizontal: 2,
+  },
   loginContainer: {
     alignItems: 'flex-start',
     marginTop: 10,
     padding: 20,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   emailContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-
+    alignItems: 'flex-start',
   },
   TextInputContainer: {
     borderColor: 'black',

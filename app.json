@@ -4,9 +4,11 @@
     "slug": "expo-router-auth-template",
     "version": "1.0.0",
     "orientation": "portrait",
+    "githubUrl": "https://github.com/jongan69/ExpoRouterAuthTemplate",
     "icon": "./assets/images/icon.png",
     "scheme": "expo-router-auth-template",
     "userInterfaceStyle": "automatic",
+    
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",

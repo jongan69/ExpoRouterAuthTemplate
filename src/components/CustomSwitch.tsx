@@ -18,6 +18,7 @@ export default function CustomSwitch({
     return (
         <View
             style={{
+                margin: 20,
                 backgroundColor: colors.border,
                 borderRadius: 10,
                 borderColor: '#fff',
