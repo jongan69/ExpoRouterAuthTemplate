@@ -2,7 +2,7 @@
 
 Eas Mobile App
 
-https://expo.dev/%40jongan69/expo-router-auth-template?serviceType=eas&distribution=expo-go&scheme=&channel=main&sdkVersion=49.0.0
+[![Try with Expo Go](https://img.shields.io/badge/Try%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/%40jongan69/expo-router-auth-template?serviceType=eas&distribution=expo-go&scheme=&channel=main&sdkVersion=49.0.0)
 
 This is a template for building a mobile app with Expo, featuring authentication using Expo Router for routing. The project is configured for deployment on Vercel, making it easy to host your app in the cloud and dynamic on mobile.
 
