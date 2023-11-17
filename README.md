@@ -11,18 +11,15 @@
 [![CodeQL](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/codeql.yml)
 [![pages-build-deployment](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/pages/pages-build-deployment)
 
-
 This is a template for building a mobile app with Expo, featuring authentication using Expo Router for routing. The project is configured for deployment on Vercel, making it easy to host your app in the cloud and dynamic on mobile.
 
 [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](/docs/ "Go to project documentation")
 
 ## DEMO
 
-  [![View Web - Vercel](https://img.shields.io/badge/View_Web-Vercel-2ea44f?style=for-the-badge)](https://test-rn.vercel.app)
+[![View Web - Vercel](https://img.shields.io/badge/View_Web-Vercel-2ea44f?style=for-the-badge)](https://test-rn.vercel.app)
 
-  [![Try Mobile with Expo Go](https://img.shields.io/badge/Try%20%20Mobile%20App%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/%40jongan69/expo-router-auth-template?serviceType=eas&distribution=expo-go&scheme=&channel=main&sdkVersion=49.0.0)
-  
-
+[![Try Mobile with Expo Go](https://img.shields.io/badge/Try%20%20Mobile%20App%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/%40jongan69/expo-router-auth-template?serviceType=eas&distribution=expo-go&scheme=&channel=main&sdkVersion=49.0.0)
 
 ## Getting Started
 
@@ -100,13 +97,6 @@ Follow these steps to get started with the Expo Router Auth Template:
 
 - **Vercel Integration:** Seamless deployment on Vercel for web-based hosting.
 
-## Documentation
-
-<div align="center">
-
-
-</div>
-
 ## Contributing
 
 Feel free to contribute to this project. Please follow the [Contribution Guidelines](CONTRIBUTING.md).
@@ -117,4 +107,4 @@ Released under [MIT](/LICENSE) by [@jongan69](https://github.com/jongan69).
 
 ### Notes
 
---- Use  "web3": "4.0.2" to avoid error
+--- Use "web3": "4.0.2" to avoid error
