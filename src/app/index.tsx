@@ -57,8 +57,9 @@ export default function SignInScreen() {
                 alt={appData.expo.name}
               />
               <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-gray-900">
-                Sign in to your account
+                Sign in to your account 
               </h2>
+              <p>(There is no validation, whatever you enter saves to local state)</p>
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

@@ -30,6 +30,7 @@
     "@shopify/flash-list": "1.4.3",
     "@ui-kitten/components": "^5.3.1",
     "@ui-kitten/eva-icons": "^5.3.1",
+    "axios": "^1.6.2",
     "bitcoinjs-lib": "^6.1.5",
     "eas-cli": "^5.8.0",
     "expo": "~49.0.18",
@@ -60,6 +61,8 @@
     "react-native-url-polyfill": "^2.0.0",
     "react-native-web": "~0.19.6",
     "react-native-webview": "13.2.2",
+    "react-spring": "^9.7.3",
+    "react-tinder-card": "^1.6.4",
     "text-encoding": "^0.7.0",
     "web3": "4.0.2"
   },
