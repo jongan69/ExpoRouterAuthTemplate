@@ -6,6 +6,7 @@
 [![issues - ExpoRouterAuthTemplate](https://img.shields.io/github/issues/jongan69/ExpoRouterAuthTemplate)](https://github.com/jongan69/ExpoRouterAuthTemplate/issues)
 [![stars - ExpoRouterAuthTemplate](https://img.shields.io/github/stars/jongan69/ExpoRouterAuthTemplate?style=social)](https://github.com/jongan69/ExpoRouterAuthTemplate)
 
+![Vercel deployments](https://img.shields.io/github/deployments/jongan69/ExpoRouterAuthTemplate/production?style=flat&logoColor=white&label=Vercel%20Deployment)
 [![EAS Update](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/update.yml/badge.svg)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/update.yml)
 [![CodeQL](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/codeql.yml)
 [![pages-build-deployment](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/pages/pages-build-deployment)
