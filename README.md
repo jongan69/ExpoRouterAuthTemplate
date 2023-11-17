@@ -2,7 +2,7 @@
 
 [![jongan69 - ExpoRouterAuthTemplate](https://img.shields.io/static/v1?label=jongan69&message=ExpoRouterAuthTemplate&color=blue&logo=github)](https://github.com/jongan69/ExpoRouterAuthTemplate "Go to GitHub repo")
 [![EAS Update](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/update.yml/badge.svg)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/update.yml)
-[![CodeQL](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/codeql.yml/badge.svg)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/codeql.yml)
+[![CodeQL](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions/workflows/codeql.yml)
 [![GitHub tag](https://img.shields.io/github/tag/jongan69/ExpoRouterAuthTemplate?include_prereleases=&sort=semver&color=blue)](https://github.com/jongan69/ExpoRouterAuthTemplate/releases/)
 [![issues - ExpoRouterAuthTemplate](https://img.shields.io/github/issues/jongan69/ExpoRouterAuthTemplate)](https://github.com/jongan69/ExpoRouterAuthTemplate/issues)
 [![stars - ExpoRouterAuthTemplate](https://img.shields.io/github/stars/jongan69/ExpoRouterAuthTemplate?style=social)](https://github.com/jongan69/ExpoRouterAuthTemplate)
