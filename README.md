@@ -4,6 +4,43 @@ Eas Mobile App
 
 [![Try with Expo Go](https://img.shields.io/badge/Try%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/%40jongan69/expo-router-auth-template?serviceType=eas&distribution=expo-go&scheme=&channel=main&sdkVersion=49.0.0)
 
+_Social buttons_
+
+[![jongan69 - ExpoRouterAuthTemplate](https://img.shields.io/static/v1?label=jongan69&message=ExpoRouterAuthTemplate&color=blue&logo=github)](https://github.com/jongan69/ExpoRouterAuthTemplate "Go to GitHub repo")
+[![stars - ExpoRouterAuthTemplate](https://img.shields.io/github/stars/jongan69/ExpoRouterAuthTemplate?style=social)](https://github.com/jongan69/ExpoRouterAuthTemplate)
+[![forks - ExpoRouterAuthTemplate](https://img.shields.io/github/forks/jongan69/ExpoRouterAuthTemplate?style=social)](https://github.com/jongan69/ExpoRouterAuthTemplate)
+
+
+_Repo metadata_
+
+[![update](https://github.com/jongan69/ExpoRouterAuthTemplate/workflows/update/badge.svg)](https://github.com/jongan69/ExpoRouterAuthTemplate/actions?query=workflow:"update")
+[![GitHub tag](https://img.shields.io/github/tag/jongan69/ExpoRouterAuthTemplate?include_prereleases=&sort=semver&color=blue)](https://github.com/jongan69/ExpoRouterAuthTemplate/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![issues - ExpoRouterAuthTemplate](https://img.shields.io/github/issues/jongan69/ExpoRouterAuthTemplate)](https://github.com/jongan69/ExpoRouterAuthTemplate/issues)
+
+_Call-to-Action buttons_
+
+<div align="center">
+
+
+
+[![View site - GH Pages](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://jongan69.github.io/ExpoRouterAuthTemplate/)
+
+</div>
+
+## Documentation
+
+<div align="center">
+
+[![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](/docs/ "Go to project documentation")
+
+</div>
+
+
+## License
+
+Released under [MIT](/LICENSE) by [@jongan69](https://github.com/jongan69).
+
 This is a template for building a mobile app with Expo, featuring authentication using Expo Router for routing. The project is configured for deployment on Vercel, making it easy to host your app in the cloud and dynamic on mobile.
 
 ## Getting Started
