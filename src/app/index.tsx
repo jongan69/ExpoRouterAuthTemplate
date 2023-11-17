@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Platform, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Platform, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { Text, View } from '../components/Themed'
 import { useSession } from '../auth/ctx';
 import { router } from 'expo-router';
@@ -47,9 +47,13 @@ export default function SignInScreen() {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+              {/* <Image 
+              source={require('../../assets/images/icon.png')}
+              className="w-auto h-10 mx-auto"
+              /> */}
               <img
                 className="w-auto h-10 mx-auto"
-                src={'../../assets/images/icon.png'}
+                src={`${appData.expo.githubUrl}/blob/main/assets/images/icon.png?raw=true`}
                 alt={appData.expo.name}
               />
               <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-gray-900">

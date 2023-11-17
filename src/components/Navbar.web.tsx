@@ -11,10 +11,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-  const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-  ]
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+]
 
 export default function WebNavbar() {
   const { session, signOut }: any = useSession();
@@ -42,7 +42,7 @@ export default function WebNavbar() {
                 <div className="flex items-center flex-shrink-0">
                   <img
                     className="w-auto h-8"
-                    src={'../../assets/images/icon.png'}
+                    src={`${appData.expo.githubUrl}/blob/main/assets/images/icon.png?raw=true`}
                     alt={appData.expo.name}
                   />
                 </div>
@@ -148,22 +148,23 @@ export default function WebNavbar() {
           </div>
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => { 
+              {navigation.map((item) => {
                 const activeRoute = pathname === `${item.href}`
                 return (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    activeRoute ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={activeRoute ? 'page' : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              )})}
+                  <Disclosure.Button
+                    key={item.name}
+                    as="a"
+                    href={item.href}
+                    className={classNames(
+                      activeRoute ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'block rounded-md px-3 py-2 text-base font-medium'
+                    )}
+                    aria-current={activeRoute ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </Disclosure.Button>
+                )
+              })}
             </div>
           </Disclosure.Panel>
         </>
