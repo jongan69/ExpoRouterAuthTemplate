@@ -6,6 +6,8 @@ import { useSession } from '../../../auth/ctx';
 import { usePathname, useSegments } from 'expo-router';
 import React from 'react';
 
+import * as AppData from '../../../../app.json'
+
 export default function WebSettings() {
   const { signOut }: any = useSession();
   const pathname = usePathname();
@@ -18,7 +20,7 @@ export default function WebSettings() {
         header={'Settings'}
         highlight={`You are at ${pathname}`}
         subtitle={`Which is ${segments}`}
-        link={'Test'}
+        link={`${AppData.expo.githubUrl}/blob/main/src/app/${segments[0]}/${segments[1] ? `${segments[1]}/` : ''}${segments[2] ? `${segments[2]}` : ''}.tsx`}
       />
       <Text
         onPress={() => {

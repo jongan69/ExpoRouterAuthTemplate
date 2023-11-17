@@ -36,7 +36,7 @@ export default function ContentCard({  header, highlight, subtitle, link }: { he
       <View style={styles.helpContainer}>
         <ExternalLink
           style={styles.helpLink}
-          href="https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet">
+          href={link}>
           <Text style={styles.helpLinkText} lightColor={Themes.light.tint}>
             {link}
           </Text>

@@ -6,19 +6,22 @@ import { useSession } from '../../../auth/ctx';
 import { usePathname, useSegments } from 'expo-router';
 import React from 'react';
 
+import * as AppData from '../../../../app.json'
+
 export default function WebProfile() {
-  const { signOut }: any = useSession();
+  const { session, signOut }: any = useSession();
   const pathname = usePathname();
   const segments = useSegments();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <ContentCard
-        header={'Profile'}
+        header={`Hello ${session}`}
         highlight={`You are at ${pathname}`}
         subtitle={`Which is ${segments}`}
-        link={'Test'}
+        link={`${AppData.expo.githubUrl}/blob/main/src/app/${segments[0]}/${segments[1] ? `${segments[1]}/` : ''}${segments[2] ? `${segments[2]}` : ''}.tsx`}
       />
       <Text
         onPress={() => {
